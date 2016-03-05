@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,9 +15,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    
+    
+    
+    
+    
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "instagram"
+                configuration.clientKey = "instagram"
+                configuration.server = "https://desolate-escarpment-27263.herokuapp.com/parse"
+            })
+        )
+        
+        if PFUser.currentUser() != nil {
+            // if there is a logged in user then load the home view controller
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyBoard.instantiateViewControllerWithIdentifier("feed") as UIViewController
+            self.window?.rootViewController = viewController
+            
+            self.window?.makeKeyAndVisible()
+            
+
+        }
+
+        
+        
+        
         return true
+        
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
