@@ -16,7 +16,7 @@ class UploadViewControler: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        photoView.image = uploadedPhoto
         // Do any additional setup after loading the view.
     }
 

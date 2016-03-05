@@ -3,7 +3,8 @@
 # Uncomment this line if you're using Swift
  use_frameworks!
 pod 'Parse'
-pod 'AFNetworking'
+pod 'AFNetworking’
+pod ‘MBProgressHUD’
 target 'Instagram' do
 
 end
